@@ -10,5 +10,5 @@ int main()
     float r = l1 * l1;
     
     printf("A area do quadrado é de %f centimetros", r);
-
+    return 0;
 }
