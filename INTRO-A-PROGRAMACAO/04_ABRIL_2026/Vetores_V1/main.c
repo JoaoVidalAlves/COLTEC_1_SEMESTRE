@@ -21,7 +21,7 @@ Intermediario
 (Juntei os exercicios 4 a 5) do nivel Intermediario.
 
 Dificil
-1. Verifique se um vetor est ́a ordenado.
+1. Verifique se um vetor esta ordenado.
 2. Conte quantos elementos da matriz s ̃ao maiores que um valor informado.
 3. Transponha uma matriz.
 4. Encontre o maior valor de cada coluna.
