@@ -36,16 +36,19 @@ int main()
     }
     
     switch (bandeira) {
-        case 1: 
+        case 1: {
         resultado_final = resultado;
+        }
         break;
         
-        case 2:
+        case 2: {
         resultado_final = resultado + 15;
+        }
         break;
         
-        case 3:
+        case 3: {
         resultado_final = resultado + 3;
+        }
         break;
         
         default:

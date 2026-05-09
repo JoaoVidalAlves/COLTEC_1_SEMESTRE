@@ -16,26 +16,31 @@ int numero_par_ou_impar (int numero) {
 
 float calculadora (float num1, float num2, char op) {
         switch (op) {
-            case '+':
-                return num1 + num2; 
+            case '+': {
+                return num1 + num2;
+            }
             break;
-            case '-':
-                return num1 - num2; 
+            case '-': {
+                return num1 - num2;
+            }
             break;
-            case '*': 
-                return num1 * num2; 
+            case '*': {
+                return num1 * num2;
+            }
             break;
-            case '/': 
+            case '/': {
             if (num2 == 0) {
                 printf("Não é possivel dividir por 0");
                 return -1;
             } else {
-                return num1 / num2; 
+                return num1 / num2;
+            }
             }
             break;
-            default:
+            default: {
                 printf("Operador invalido!");
                 return -1;
+            }
         }
 }
 
@@ -160,14 +165,14 @@ int main()
 //SELECIONAR O EXERCICIO DA DIFICULDADE ESCOLHIDA
     
         switch (dificuldade) {
-            case 1:
+            case 1: {
                 printf("\n***EXERCICIOS FACEIS***\n");
                 printf("\nSelecione o exercicio (1 a 3): ");
                 scanf("%i", &exercicio);
                 system("clear");
                 if (exercicio >= 1 && exercicio <=3) {
                     switch (exercicio) {
-                        case 1:
+                        case 1: {
                             int num;
                             int res;
                             printf("Digite um numero: ");
@@ -180,9 +185,10 @@ int main()
                             else 
                                 printf("O numero informado é impar.");
                         return 0;                            
+                        }
                         break;
                         
-                        case 2:
+                        case 2: {
                             float num1;
                             float num2;
                             char op;
@@ -205,30 +211,35 @@ int main()
                             } else {
                                 switch (op) {
                                 
-                                case '+':
+                                case '+': {
                                     printf("A soma entre %.2f e %.2f = %.2f", num1, num2, resultado_calc);
                                     return 0;
+                                }
                                 break;
                                 
-                                case '-':
+                                case '-': {
                                     printf("A subtração entre %.2f e %.2f = %.2f", num1, num2, resultado_calc);
                                     return 0;
+                                }
                                 break;
                                 
-                                case '*':
+                                case '*': {
                                     printf("A multiplicação entre %.2f e %.2f = %.2f", num1, num2, resultado_calc);
                                     return 0;
+                                }
                                 break;
                                 
-                                case '/':
+                                case '/': {
                                     printf("A divisão entre %.2f e %.2f = %.2f", num1, num2, resultado_calc);
                                     return 0;  
+                                }
                                 break;
                                 }
                             }
+                        }
                         break;
                         
-                        case 3:
+                        case 3: {
                             int num1_M_ou_m, num2_M_ou_m;
                             
                             printf("Digite dois numeros: ");
@@ -236,6 +247,7 @@ int main()
                             
                             Maior_e_Menor (num1_M_ou_m, num2_M_ou_m);
                             return 0;
+                        }
                         break;
                     }
                 }
@@ -243,32 +255,35 @@ int main()
                     printf("Programa encerrado - Selecione uma opção valida.");
                     return 0;
                 }
-            case 2:
+            }
+            case 2: {
                 printf("\n***EXERCICIOS INTERMEDIARIOS***\n");
                 printf("\nSelecione o exercicio (1 a 5): ");
                 scanf("%i", &exercicio);
                 system("clear");
                 if (exercicio >= 1 && exercicio <=5) {
                     switch (exercicio) {
-                        case 1:
+                        case 1: {
                             int numero_somatorio;
                             printf("Digite o valor maximo para o somatorio: ");
                             scanf("%d", &numero_somatorio);
                             int resultado_somatorio = somatorio(numero_somatorio);
                             printf("O resultado do somatorio de 0 a %d e: %d", numero_somatorio, resultado_somatorio);
                             return 0;
+                        }
                         break;
                         
-                        case 2:
+                        case 2: {
                             int numero_fatorial;
                             printf("Digite o numero que deseja o fatorial: ");
                             scanf("%d", &numero_fatorial);
                             int resultado_fatorial = calc_fatorial(numero_fatorial);
                             printf("O fatorial de %d é: %d", numero_fatorial, resultado_fatorial);
                             return 0;
+                        }
                         break;
                         
-                        case 3:
+                        case 3: {
                     	    int termo;
 
                             printf("IMPRIMINDO A SEQUENCIA DE FIBONACCI\n");
@@ -276,13 +291,15 @@ int main()
                             scanf("%d", &termo);
                             
                             switch (termo) {
-                                case 1:
+                                case 1: {
                                     printf("O primeiro termo é '0'");
                                     return 0;
+                                }
                                 break;
-                                case 2:
+                                case 2: {
                                     printf("O segundo termo é '1'");
                                     return 0;
+                                }
                                 break;
                             }
                             
@@ -300,9 +317,10 @@ int main()
                             long long res = fibonacci (termo);
                             printf("\nO termo é %lld", res);
                             return 0;
+                        }
                         break;
                         
-                        case 4:
+                        case 4: {
                             int num;
     
                             printf("RODANDO - VERIFICADOR DE VALORES PALINDROMOS\nDigite um numero: ");
@@ -310,9 +328,10 @@ int main()
                         
                             ver_palindromo(num)==num ? printf("É palindromo.") : printf("Não é palindromo");
                             return 0;
+                        }
                         break;
                         
-                        case 5:
+                        case 5: {
                             char senha[30];
 
                             printf("Digite a senha: ");
@@ -320,26 +339,29 @@ int main()
                             
                             ver_senha(senha);
                             return 0;
+                        }
                         break;
                     }
                 } else {
                     printf("Programa encerrado - Selecione uma opção valida.");
                     return 0;
                 }
+            }
         
-            case 3:
+            case 3: {
                 printf("\n***EXERCICIOS DIFICEIS***\n");
                 printf("\nSelecione o exercicio (1 a 2): ");
                 scanf("%i", &exercicio);
                 system("clear");
                 if (exercicio >= 1 && exercicio <=2) {
                     switch (exercicio) {
-                        case 1:
+                        case 1: {
                             printf("Em andamento..");
                             return 0;
+                        }
                         break;
                         
-                        case 2:
+                        case 2: {
                                 char CPF[12];
 
                                 printf("Digite seu CPF (apenas numeros): ");
@@ -390,6 +412,7 @@ int main()
                                     printf("CPF INVALIDO");
                                 }
                                 return 0;
+                        }
                         break;
                                                     
                     } 
@@ -397,6 +420,7 @@ int main()
                     printf("Programa encerrado - Selecione uma opção valida.");
                     return 0;
                 }
+            }
         }         
     } else {
         printf("Programa encerrado - Selecione uma opção valida.");

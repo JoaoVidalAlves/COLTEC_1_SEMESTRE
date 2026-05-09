@@ -28,13 +28,13 @@ int main()
 //SELECIONAR O EXERCICIO DA DIFICULDADE ESCOLHIDA
     
     switch (dificuldade) {
-        case 1:
+        case 1: {
             printf("\n***EXERCICIOS FACEIS***\n");
             printf("\nSelecione o exercicio (1 a 4): ");
             scanf("%i", &exercicio);
                 system("clear");
                 switch (exercicio) {
-                    case 1:
+                    case 1: {
                     printf("EX FACIL - 1\n");
                         int de0a100 = 0;
                         int de100a0 = 99;
@@ -46,9 +46,10 @@ int main()
                            de100a0--; 
                         }
                         return 0;
+                    }
                     break;
                     
-                    case 2:
+                    case 2: {
                     printf("EX FACIL - 2\n");
                         int valor_atual = 0;
                             printf("\nINICIO - MOSTRANDO OS NUMERO PARES DE 0 a 50\n");
@@ -58,9 +59,10 @@ int main()
                             } valor_atual++;
                         } 
                         return 0;
+                    }
                     break;
                     
-                    case 3:
+                    case 3: {
                     printf("EX FACIL - 3\n");
                         int multiplicar=1;
                         int numero=0;
@@ -80,9 +82,10 @@ int main()
                             }
                             
                             return 0;
+                    }
                     break;
                     
-                    case 4:
+                    case 4: {
                     printf("EX FACIL - 4\n");
                         int num_inicial=0;
                         int adicao=1;
@@ -95,9 +98,11 @@ int main()
                         }
                     
                         return 0;
+                    }
                     break;
     
                 }
 
+        }
     }
 }

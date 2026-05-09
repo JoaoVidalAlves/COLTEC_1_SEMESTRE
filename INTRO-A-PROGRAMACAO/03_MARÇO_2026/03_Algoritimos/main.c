@@ -222,16 +222,27 @@ int main () {
     scanf("%f", &num2);
     
     switch (op) {
-        case '+': printf("A soma entre %.2f e %.2f e: %.2f", num1, num2, num1 + num2); break;
-        case '-': printf("A subtração entre %.2f e %.2f e: %.2f", num1, num2, num1 - num2); break;
-        case '*': printf("A multiplicação entre %.2f e %.2f e: %.2f", num1, num2, num1 * num2); break;
-        case '/': 
+        case '+': {
+            printf("A soma entre %.2f e %.2f e: %.2f", num1, num2, num1 + num2);
+        }
+        break;
+        case '-': {
+            printf("A subtração entre %.2f e %.2f e: %.2f", num1, num2, num1 - num2);
+        }
+        break;
+        case '*': {
+            printf("A multiplicação entre %.2f e %.2f e: %.2f", num1, num2, num1 * num2);
+        }
+        break;
+        case '/': {
         
         if (num2 == 0) 
         {
         printf("Não é possivel dividir por 0");
         }else{
-        printf("A divisão entre %.2f e %.2f e: %.2f", num1, num2, num1 / num2); break;
+        printf("A divisão entre %.2f e %.2f e: %.2f", num1, num2, num1 / num2);
+        }
+        break;
             }
         return 0;
                 }

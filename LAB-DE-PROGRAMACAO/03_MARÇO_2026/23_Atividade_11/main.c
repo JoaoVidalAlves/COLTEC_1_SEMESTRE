@@ -22,20 +22,24 @@ int main()
     scanf("%i", &f_pgmnt);
     
     switch (f_pgmnt) {
-        case 1:
+        case 1: {
             printf("Pagamento a vista.");
+        }
         break;
         
-        case 2:
+        case 2: {
             printf("Pagamento imediato na conta.");
+        }
         break;
         
-        case 3:
+        case 3: {
             printf("Pagamento parcelado possível");
+        }
         break;
            
-        case 4:
+        case 4: {
             printf("Pagamento a vista.");
+        }
     }
     
     return 0;

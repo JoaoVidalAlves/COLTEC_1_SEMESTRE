@@ -32,14 +32,14 @@ int main()
 //SELECIONAR O EXERCICIO DA DIFICULDADE ESCOLHIDA
     
         switch (dificuldade) {
-            case 1:
+            case 1: {
                 printf("\n***EXERCICIOS FACEIS***\n");
                 printf("\nSelecione o exercicio (1 a 4): ");
                 scanf("%i", &exercicio);
                 system("clear");
                 if (exercicio >= 1 && exercicio <=4) {
                     switch (exercicio) {
-                        case 1:
+                        case 1: {
                             printf("EX FACIL - 1\n");
                             for(int de0a100 = 0; de0a100 <= 100; de0a100++) {
                                printf("%i\n", de0a100);
@@ -48,9 +48,10 @@ int main()
                                printf("%i\n", de100a0);
                             }
                                 return 0;
+                        }
                         break;
                         
-                        case 2:
+                        case 2: {
                             printf("EX FACIL - 2\n");
                             printf("\nINICIO - MOSTRANDO OS NUMERO PARES DE 0 a 50\n");
                             for(int valor_atual = 0; valor_atual <=50; valor_atual++) {
@@ -59,9 +60,10 @@ int main()
                                 }
                             } 
                             return 0;
+                        }
                         break;
                         
-                        case 3:
+                        case 3: {
                             printf("EX FACIL - 3\n");
                             int numero=0;
                             printf("\nQual tabuada deseja 1 a 9 (Um valor fora do intervalo encerra o programa): ");
@@ -75,9 +77,10 @@ int main()
                                     return 0;
                                 }
                             }
+                        }
                         break;
                         
-                        case 4:
+                        case 4: {
                             printf("EX FACIL - 4\n");
                             int adicao=1;
                             printf("Mostrando a soma até 100\n");
@@ -86,22 +89,24 @@ int main()
                                 printf("%i + %i = %i\n", num_inicial, adicao, num_inicial + adicao);
                             }
                             return 0;
+                        }
                         break;
                     }
                 } else {
                     printf("Programa encerrado - Selecione uma opção valida.");
                     return 0;
                 }
+            }
             break;
             
-            case 2:
+            case 2: {
                 printf("\n***EXERCICIOS INTERMEDIARIOS***\n");
                 printf("\nSelecione o exercicio (1 a 4): ");
                 scanf("%i", &exercicio);
                 system("clear");
                 if (exercicio >= 1 && exercicio <=4) {
                     switch (exercicio) {
-                        case 1:
+                        case 1: {
                             int numero_repeticao;
                             printf("EX INTERMEDIARIO - 1\n");
                             while (numero_repeticao != 0) {
@@ -111,9 +116,10 @@ int main()
                             
                             printf("Programa encerrado.");
                             return 0;
+                        }
                         break;
                         
-                        case 2:
+                        case 2: {
                             float soma = 0;
                             float nota = 0;
                             float contador = 0;
@@ -136,9 +142,10 @@ int main()
                                     printf("\nNenhuma nota valida foi digiada.");
                                 }
                             return 0;
+                        }
                         break;
                         
-                        case 3:
+                        case 3: {
                     	    int temp = 0;
                             printf("EX INTERMEDIARIO - 3\n");
                     	    
@@ -151,9 +158,10 @@ int main()
                     	    printf("Programa encerrado");
                     
                     	    return 0;
+                        }
                         break;
                         
-                        case 4:
+                        case 4: {
                             srand(time(NULL)); // Faz o gerador aleatorio utilizar o horario do pc como diferencial para gerar os numeros.
                             int numero = rand() % 100;
                             int resposta;
@@ -173,21 +181,23 @@ int main()
                             } 
                             printf("Você acertou!"); 
                             return 0;
+                        }
                         break;
                          }
                 } else {
                     printf("Programa encerrado - Selecione uma opção valida.");
                     return 0;
                 }
+            }
         
-            case 3:
+            case 3: {
                 printf("\n***EXERCICIOS DIFICEIS***\n");
                 printf("\nSelecione o exercicio (1 a 3): ");
                 scanf("%i", &exercicio);
                 system("clear");
                 if (exercicio >= 1 && exercicio <=3) {
                     switch (exercicio) {
-                        case 1:
+                        case 1: {
                             int multiplo=0;
                             printf("EX DIFICIL - 1\n");
                             
@@ -205,9 +215,10 @@ int main()
                                 } else {}
                             }
                             return 0;
+                        }
                         break;
                         
-                        case 2:
+                        case 2: {
                             int valor=0;
                             int contador=0;
                             
@@ -227,9 +238,10 @@ int main()
                             printf("\nAo final foram digitador %i valores", contador);
                         
                             return 0;
+                        }
                         break;
                         
-                        case 3:
+                        case 3: {
                             int senha=0;
                             int login=0;
                             int contador_de_tentativas=1;
@@ -254,12 +266,14 @@ int main()
                             } 
                             printf("Conta bloqueada 3 tentativas incorretas.");
                             return 0;
+                        }
                         break;
                     } 
                 } else {
                     printf("Programa encerrado - Selecione uma opção valida.");
                     return 0;
                 }
+            }
         }         
     } else {
             printf("Programa encerrado - Selecione uma opção valida.");

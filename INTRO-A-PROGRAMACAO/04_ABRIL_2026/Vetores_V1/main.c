@@ -54,14 +54,14 @@ int main()
 //SELECIONAR O EXERCICIO DA DIFICULDADE ESCOLHIDA
     
         switch (dificuldade) {
-            case 1:
+            case 1: {
                 printf("\n***EXERCICIOS FACEIS***\n");
                 printf("\nSelecione o exercicio (1 a 2): ");
                 scanf("%i", &exercicio);
                 system("clear");
                 if (exercicio >= 1 && exercicio <=3) {
                     switch (exercicio) {
-                        case 1:
+                        case 1: {
                             int vetor[10]={0};
                             
                             printf("Apenas valores inteiros e positivos!!\n");
@@ -97,10 +97,11 @@ int main()
                             }
                             printf("A media é %.2f", media/10);
 
-                            return 0;                        
+                            return 0;
+                        }
                         break;
                             
-                        case 2:
+                        case 2: {
                             int matriz[3][3];
                             for(int i=0; i<3; i++) {
                                 for(int j=0; j<3; j++) {
@@ -119,6 +120,7 @@ int main()
                                 }
                             }
                                 return 0;
+                        }
                         break;
                     }
                 }
@@ -126,14 +128,15 @@ int main()
                     printf("Programa encerrado - Selecione uma opção valida.");
                     return 0;
                 }
-            case 2:
+            }
+            case 2: {
                 printf("\n***EXERCICIOS INTERMEDIARIOS***\n");
                 printf("\nSelecione o exercicio (1 a 2): ");
                 scanf("%i", &exercicio);
                 system("clear");
                 if (exercicio >= 1 && exercicio <=5) {
                     switch (exercicio) {
-                        case 1:
+                        case 1: {
                             srand(time(NULL));
                             int vetor[10];
                             int num;
@@ -188,9 +191,10 @@ int main()
                                 printf("P%d = %d\n",i+1,vetor[i]);
                             }
                             return 0;
+                        }
                         break;
                         
-                        case 2:
+                        case 2: {
                             int matriz[3][3];
     
                             for(int i=0; i<3; i++) {
@@ -253,21 +257,23 @@ int main()
                             // O INDICE DA LINHA PRECISA SER IGUAL AO INDICE DA COLUNA
                                 printf("A soma da diagonal principal foi de: %d\n", soma_d);
                             return 0;
+                        }
                         break;
                     }
                 } else {
                     printf("Programa encerrado - Selecione uma opção valida.");
                     return 0;
                 }
-        
-            case 3:
+            }
+
+            case 3: {
                 printf("\n***EXERCICIOS DIFICEIS***\n");
                 printf("\nSelecione o exercicio (1 a 4): ");
                 scanf("%i", &exercicio);
                 system("clear");
                 if (exercicio >= 1 && exercicio <=4) {
                     switch (exercicio) {
-                        case 1:
+                        case 1: {
                             int vetor[10], num=0, i=0, crescente=0, decrescente=0;
     
                             printf("Verificando se o vetor esta ordenado.\n");
@@ -292,10 +298,11 @@ int main()
                             } else {
                                 printf("O vetor não esta ordenado.");
                             }
-                            return 0;    
+                            return 0;
+                        }
                         break;
                         
-                        case 2:
+                        case 2: {
                             srand(time(NULL));
                             int matriz[4][4]={0};
                             
@@ -328,20 +335,24 @@ int main()
                                 printf("Existem %d maiores que o valor informado", contador);
                             }
                             return 0;      
+                        }
                         break;
                             
-                        case 3:
+                        case 3: {
                             
+                        }
                         break;
                             
-                        case 4:
+                        case 4: {
                         
+                        }
                         break;
                     } 
                 } else {
                     printf("Programa encerrado - Selecione uma opção valida.");
                     return 0;
                 }
+            }
         }         
     } else {
         printf("Programa encerrado - Selecione uma opção valida.");
