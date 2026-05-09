@@ -344,12 +344,60 @@ int main()
                         }
                         break;
                             
-                        case 3:
-                            
+                        case 3: {
+                            #define L 3
+                            #define C 3
+                            int matriz_A[L][C];
+                            int matriz_INT[C][L];
+                            int i=0;
+
+                            for(int a=0; a<L; a++) {
+                                for(int b=0; b<C; b++) {
+                                    printf("Digite um numero para a posição %d: ", i+1);
+                                    scanf("%d", &matriz_A[a][b]);
+                                    i++;
+                                }
+                            }
+                            printf("MATRIZ INTERPOSTA:\n");
+                            for(int c=0; c<C; c++) {
+                                printf("\n");
+                                for(int b=0; b<L; b++) {
+                                    matriz_INT[c][b] = matriz_A[b][c];
+                                    printf("%d\t", matriz_INT[c][b]);
+                                }
+                            }
+                            return 0;
+                        }
                         break;
                             
-                        case 4:
-                        
+                        case 4: {
+                            #define L 3
+                            #define C 3
+                            int matriz[L][C];
+                            int vetor_maior[C]={0};
+
+                            for(int a=0; a<L; a++) {
+                                for(int b=0; b<C; b++) {
+                                    printf("Digite um numero para a posição %d: ", (a*C)+b+1);
+                                    scanf("%d", &matriz[a][b]);
+                                }
+                            }
+                            
+                            for(int c=0; c<C; c++) {
+                                for(int b=0; b<L; b++) {
+                                    if(matriz[b][c]>vetor_maior[c]) {
+                                        vetor_maior[c]=matriz[b][c];
+                                    }
+                                }
+                            }
+                            
+                            printf("O maior valor de cada coluna é:\n");
+                            for(int i=0; i<C; i++) {
+                                printf("Coluna %d: %d\n", i+1, vetor_maior[i]);
+                            }
+                            
+                            return 0;
+                        }
                         break;
                     } 
                 } else {
