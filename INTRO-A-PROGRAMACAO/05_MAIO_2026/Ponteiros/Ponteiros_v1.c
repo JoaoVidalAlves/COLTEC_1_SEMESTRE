@@ -2,8 +2,8 @@
 
 ▶ Facil
 1. Aloque uma quantidade de 10 valores em um vetor.
-2. Crie uma funcao que mostra os valores de um vetor;
-3. Criar uma funcao de calculadora com todas as operacoes basicas.
+1.2. Crie uma funcao que mostra os valores de um vetor;
+2. Criar uma funcao de calculadora com todas as operacoes basicas.
 
 ▶ Intermediario
 1. Criar uma funçao que armazena as notas introduzidas de forma dinamicas. Considere tambem uma funçao para mostrar todas as notas incluıdas e que calcula a media.
@@ -94,7 +94,7 @@ void menuFacil() {
     int exercicio=0;
     system(CLEAR_COMMAND);
     printf("\n***EXERCICIOS FACEIS***\n");
-    printf("\nSelecione o exercicio (1 a 5): ");
+    printf("\nSelecione o exercicio (1 a 2): ");
     scanf("%d", &exercicio);
     
     switch (exercicio) {
@@ -103,21 +103,22 @@ void menuFacil() {
         }
         break;
         case 2: {
-            atvfacil1();    
+            atvfacil2();    
         }
         break;
-        case 3: {
-            atvfacil1();    
+        /*case 3: {
+            atvfacil3();    
         }
         break;
         case 4: {
-            atvfacil1();    
+            atvfacil4();    
         }
         break;
         case 5: {
-            atvfacil1();    
+            atvfacil5();    
         }
         break;
+        */
         default : {
             printf("Selecione um exercicio valido");
         }
@@ -197,10 +198,79 @@ void menuDificil() {
 }
 
 void atvfacil1() {
-    printf("EM CONSTRUÇÃO");
+
+    void mostrarVetor(int *vetor) {
+        printf("\nValores do vetor:\n");
+        for(int i=0; i<10; i++) {
+            printf("Posicao %d: %d\n", i+1, vetor[i]);
+        }
+    }
+
+    int *vetor = malloc(10 * sizeof(int));
+
+    for(int i=0; i<10; i++) {
+        printf("Digite o valor para a posicao %d: ", i+1);
+        scanf("%d", &vetor[i]);
+    }
+    mostrarVetor(vetor);
+    free(vetor);
 }
 void atvfacil2() {
-    printf("EM CONSTRUÇÃO");
+    char *op;
+    int *num1, *num2, *resultado;
+    num1 = malloc(1*sizeof(int));
+    num2 = malloc(1*sizeof(int));
+    resultado = malloc(1*sizeof(int));
+    op = malloc(1*sizeof(char));
+    
+    printf("Digite a operacao (+, -, *, /): ");
+    scanf(" %c", op);
+    
+    printf("Digite o primeiro numero: ");
+    scanf("%d", num1);
+   
+    printf("Digite o segundo numero: ");
+    scanf("%d", num2);
+    
+    switch (*op) {
+        case '+': {
+            *resultado = *num1 + *num2;
+        }
+            break;
+        case '-': {
+            *resultado = *num1 - *num2;
+        }
+            break;
+        case '*': {
+            *resultado = *num1 * *num2;
+        }
+            break;
+        case '/': {
+            if (*num2 != 0) {
+                *resultado = *num1 / *num2;
+            } else {
+                printf("Erro: Divisao por zero!\n");
+                free(num1);
+                free(num2);
+                free(resultado);
+                free(op);
+                return;
+            }
+        }
+            break;
+        default:
+            printf("Operacao invalida!\n");
+            free(num1);
+            free(num2);
+            free(resultado);
+            free(op);
+            return;
+    }
+    printf("Resultado: %d\n", *resultado);
+    free(num1);
+    free(num2);
+    free(resultado);
+    free(op);
 }
 void atvfacil3() {
     printf("EM CONSTRUÇÃO");
