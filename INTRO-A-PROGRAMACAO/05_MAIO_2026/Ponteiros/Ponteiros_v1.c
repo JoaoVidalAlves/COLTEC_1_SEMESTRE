@@ -55,6 +55,7 @@ void atvdificil5();
 
 //PROTOTIPO DO MENU
 int main() {
+    system("chcp 65001 > nul");
     setlocale(LC_ALL, "pt-BR");
     int dificuldade=0;
 
@@ -66,7 +67,6 @@ int main() {
     printf("3 = DIFICIL\n");
     printf("\nSelecione: ");
     scanf("%i", &dificuldade);
-    system(CLEAR_COMMAND);
 
     switch (dificuldade) {
         case 1: {
@@ -92,11 +92,10 @@ int main() {
 //PROTOTIPO DAS DIFICULDADES
 void menuFacil() {
     int exercicio=0;
+    system(CLEAR_COMMAND);
     printf("\n***EXERCICIOS FACEIS***\n");
     printf("\nSelecione o exercicio (1 a 5): ");
     scanf("%d", &exercicio);
-   
-    system(CLEAR_COMMAND);
     
     switch (exercicio) {
         case 1: {
@@ -127,11 +126,12 @@ void menuFacil() {
 
 void menuIntermediario() {
     int exercicio=0;
+    system(CLEAR_COMMAND);
     printf("\n***EXERCICIOS INTERMEDIARIOS***\n");
     printf("\nSelecione o exercicio (1 a 5): ");
     scanf("%d", &exercicio);
    
-    system(CLEAR_COMMAND);
+    //system(CLEAR_COMMAND);
     
     switch (exercicio) {
         case 1: {
@@ -162,11 +162,12 @@ void menuIntermediario() {
 
 void menuDificil() {
     int exercicio=0;
+    system(CLEAR_COMMAND);
     printf("\n***EXERCICIOS DIFICEIS***\n");
     printf("\nSelecione o exercicio (1 a 5): ");
     scanf("%d", &exercicio);
    
-    system(CLEAR_COMMAND);
+    //system(CLEAR_COMMAND);
     
     switch (exercicio) {
         case 1: {
