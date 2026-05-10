@@ -272,6 +272,7 @@ void atvfacil2() {
     free(resultado);
     free(op);
 }
+/*
 void atvfacil3() {
     printf("EM CONSTRUÇÃO");
 }
@@ -281,7 +282,7 @@ void atvfacil4() {
 void atvfacil5() {
     printf("EM CONSTRUÇÃO");
 }
-
+*/
 void atvintermediario1() {
     printf("EM CONSTRUÇÃO");
 }
