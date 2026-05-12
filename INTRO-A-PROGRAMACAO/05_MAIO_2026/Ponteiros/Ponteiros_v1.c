@@ -406,11 +406,53 @@ void atvintermediario2() {
     free(numeros);
 }
 void atvintermediario3() {
-    int linhas, colunas;
-    printf("Digite o número de linhas: ");
+    
+    int **matriz, linhas = 0, colunas = 0;
+    
+    printf("Quantidade de linhas: ");
     scanf("%d", &linhas);
-    printf("Digite o número de colunas: ");
+    
+    matriz = malloc(linhas * sizeof(*matriz));
+    if(matriz == NULL) {
+        printf("Erro no alocamento.");
+        free(matriz);
+        return 1;
+    }
+    
+    printf("\nQuantidade de colunas: ");
     scanf("%d", &colunas);
+    
+    for(int i = 0; i < linhas; i++) {
+        matriz[i] = malloc(colunas * sizeof(int));
+        if(matriz[i] == NULL) {
+            printf("Erro no alocamento.");
+            free(matriz[i]);
+            return 1;
+        }
+    }
+    
+    int valores=0;
+    for(int i = 0; i < linhas; i++) {
+        for(int j = 0; j < colunas; j++) {
+            //system("clear")
+            printf("Digite o valor para a posição L[%d] C[%d]: ", i+1, j+1);
+            scanf("%d", &valores);
+            matriz[i][j] = valores;
+        }
+    }
+    
+    for(int i = 0; i < linhas; i++) {
+        printf("\n");
+    for(int j = 0; j < colunas; j++) {
+        printf("%d\t", matriz[i][j]);
+        }  
+    }
+    
+    for(int i=0; i < linhas; i++) {
+        free(matriz[i]);
+    }
+    free(matriz);
+    return 0;
 }
 void atvintermediario4() {
     printf("EM CONSTRUÇÃO");
