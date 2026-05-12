@@ -406,7 +406,11 @@ void atvintermediario2() {
     free(numeros);
 }
 void atvintermediario3() {
-    printf("EM CONSTRUÇÃO");
+    int linhas, colunas;
+    printf("Digite o número de linhas: ");
+    scanf("%d", &linhas);
+    printf("Digite o número de colunas: ");
+    scanf("%d", &colunas);
 }
 void atvintermediario4() {
     printf("EM CONSTRUÇÃO");
