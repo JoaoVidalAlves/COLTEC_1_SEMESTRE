@@ -284,10 +284,126 @@ void atvfacil5() {
 }
 */
 void atvintermediario1() {
-    printf("EM CONSTRUÇÃO");
+    //Cria o vetor e verifica se houve erro durante a criação
+    float *notas =calloc(10, sizeof(float));
+    if(notas==NULL) {
+        printf("Erro no alocamento.");
+        free(notas);
+    }
+
+    //Insere até a nota 9 continuamente
+    printf("Inserindo 10 notas:\n");
+    
+    for(int i=0; i<10; i++) {
+        printf("Digite a nota %d: ", i+1);
+        scanf("%f", &notas[i]);
+    }
+    char resposta;
+    printf("Dejesa inserir mais notas? (s/n): ");
+    scanf(" %c", &resposta);
+    
+    if(resposta=='s' || resposta=='S') {
+        
+        int qtd_extra=0;
+        
+        printf("Quantas notas deseja inserir: ");
+        scanf("%d", &qtd_extra);
+
+        int total = 10 + qtd_extra;
+
+        //Atualiza o vetor existente com a nova quantidade de notas
+        float *temp = realloc(notas, total * sizeof(float));
+        
+        if(temp == NULL) {
+            printf("Erro no realloc.\n");
+            free(notas);
+        }
+
+        notas = temp;
+
+        //Insere as novas notas
+        for(int i=10; i < total; i++) {
+            printf("Digite a nota %d: ", i+1);
+            scanf("%f", &notas[i]);
+        }
+        //IMPRIME AS NOTAS
+        printf("\nNotas inseridas:\n");
+        for(int i=0; i < total; i++) {
+        printf("Nota %d: %2.f\n",i+1, notas[i]);
+        }
+
+        char entrada;
+        printf("Deseja calcular a media ou encerrar (M/E): ");
+        scanf(" %c", &entrada);
+
+        if(entrada=='M' || entrada=='m') {
+            float soma=0;
+            for(int i=0; i<total; i++) {
+                soma+=notas[i];
+            }
+            printf("A media foi: %.2f\n", soma/total);
+        }
+    }
+    printf("ENCERRADO.");
+    free(notas);
 }
 void atvintermediario2() {
-    printf("EM CONSTRUÇÃO");
+    int qtde_numeros = 0;
+
+    printf("Quantos números deseja inserir: ");
+    scanf("%d", &qtde_numeros);
+    if(qtde_numeros <= 0) {
+        printf("Quantidade inválida.\n");
+        return;
+    }
+
+    int *numeros = calloc(qtde_numeros, sizeof(int));
+    if (numeros == NULL) {
+        printf("Erro no alocamento.\n");
+        return;
+    }
+
+    for (int i = 0; i < qtde_numeros; i++) {
+        int entrada = 0;
+        printf("Insira o %dº numero: ", i + 1);
+        scanf("%d", &entrada);
+        numeros[i] = entrada;
+    }
+
+    char resposta;
+    printf("Deseja alterar algum valor (s/n): ");
+    scanf(" %c", &resposta);
+    if (resposta == 's' || resposta == 'S') {
+        int alt = 0;
+        int novo_valor = 0;
+        printf("Numeros inseridos:\n");
+
+        for (int i = 0; i < qtde_numeros; i++) {
+            printf("Posição %d: %d\n", i + 1, numeros[i]);
+        }
+
+        printf("Qual posição deseja alterar: ");
+        scanf("%d", &alt);
+        if(alt <= 0 || alt > qtde_numeros) {
+            printf("Posição inválida.\n");
+            free(numeros);
+            return;
+        }
+
+        if (alt >= 1 && alt <= qtde_numeros) {
+            printf("Qual o novo valor: ");
+            scanf("%d", &novo_valor);
+            numeros[alt - 1] = novo_valor;
+
+            printf("\nVetor atualizado:\n");
+            for (int i = 0; i < qtde_numeros; i++) {
+                printf("Posição %d: %d\n", i + 1, numeros[i]);
+            }
+        } else {
+            printf("Posição Invalida.\n");
+        }
+    }
+    free(numeros);
 }
 void atvintermediario3() {
     printf("EM CONSTRUÇÃO");
