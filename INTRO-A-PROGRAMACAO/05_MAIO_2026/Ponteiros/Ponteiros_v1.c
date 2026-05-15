@@ -21,6 +21,7 @@ em posicoes especıficas. Nao aloque memoria nas posicoes de interesse.
 *******************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <locale.h>
 
@@ -272,7 +273,6 @@ void atvfacil2() {
     free(resultado);
     free(op);
 }
-/*
 void atvfacil3() {
     printf("EM CONSTRUÇÃO");
 }
@@ -282,7 +282,7 @@ void atvfacil4() {
 void atvfacil5() {
     printf("EM CONSTRUÇÃO");
 }
-*/
+
 void atvintermediario1() {
     //Cria o vetor e verifica se houve erro durante a criação
     float *notas =calloc(10, sizeof(float));
@@ -405,8 +405,7 @@ void atvintermediario2() {
     }
     free(numeros);
 }
-void atvintermediario3() {
-    
+void atvintermediario3() {   
     int **matriz, linhas = 0, colunas = 0;
     
     printf("Quantidade de linhas: ");
@@ -414,9 +413,8 @@ void atvintermediario3() {
     
     matriz = malloc(linhas * sizeof(*matriz));
     if(matriz == NULL) {
-        printf("Erro no alocamento.");
-        free(matriz);
-        return 1;
+        printf("Erro no alocamento.\n");
+        return;
     }
     
     printf("\nQuantidade de colunas: ");
@@ -425,9 +423,12 @@ void atvintermediario3() {
     for(int i = 0; i < linhas; i++) {
         matriz[i] = malloc(colunas * sizeof(int));
         if(matriz[i] == NULL) {
-            printf("Erro no alocamento.");
-            free(matriz[i]);
-            return 1;
+            printf("Erro no alocamento.\n");
+            for (int k = 0; k < i; k++) {
+                free(matriz[k]);
+            }
+            free(matriz);
+            return;
         }
     }
     
@@ -452,7 +453,7 @@ void atvintermediario3() {
         free(matriz[i]);
     }
     free(matriz);
-    return 0;
+    return;
 }
 void atvintermediario4() {
     printf("EM CONSTRUÇÃO");
