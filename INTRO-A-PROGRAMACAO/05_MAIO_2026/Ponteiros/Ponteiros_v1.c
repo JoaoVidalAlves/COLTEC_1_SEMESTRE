@@ -130,7 +130,7 @@ void menuIntermediario() {
     int exercicio=0;
     system(CLEAR_COMMAND);
     printf("\n***EXERCICIOS INTERMEDIARIOS***\n");
-    printf("\nSelecione o exercicio (1 a 5): ");
+    printf("\nSelecione o exercicio (1 a 4): ");
     scanf("%d", &exercicio);
    
     //system(CLEAR_COMMAND);
@@ -152,10 +152,10 @@ void menuIntermediario() {
             atvintermediario4();    
         }
         break;
-        case 5: {
-            atvintermediario5();    
-        }
-        break;
+        //case 5: {
+        //    atvintermediario5();    
+        //}
+        //break;
         default : {
             printf("Selecione um exercicio valido");
         }
@@ -166,7 +166,7 @@ void menuDificil() {
     int exercicio=0;
     system(CLEAR_COMMAND);
     printf("\n***EXERCICIOS DIFICEIS***\n");
-    printf("\nSelecione o exercicio (1 a 5): ");
+    printf("\nSelecione o exercicio (1 a 2): ");
     scanf("%d", &exercicio);
    
     //system(CLEAR_COMMAND);
@@ -180,7 +180,7 @@ void menuDificil() {
             atvdificil2();    
         }
         break;
-        case 3: {
+        /*case 3: {
             atvdificil3();    
         }
         break;
@@ -191,7 +191,7 @@ void menuDificil() {
         case 5: {
             atvdificil5();    
         }
-        break;
+        break;*/
         default : {
             printf("Selecione um exercicio valido");
         }
@@ -484,11 +484,12 @@ void atvintermediario4() {
     }
 
     //PRENCHER O CALENDARIO
-    int dia=0;
+    int dia=1;
     for(int i = 0; i < LINHAS; i++) {
         for(int j = 0; j < COLUNAS; j++) {
-            if (dia < 31) {
-                calendario[i][j] = dia++;
+            if (dia <= 31) {
+                calendario[i][j] = dia;
+                dia++;
             } else {
                 calendario[i][j] = 0;
             }
@@ -585,7 +586,7 @@ void atvintermediario4() {
     for(int i = 0; i < LINHAS; i++) {
         for(int j = 0; j < COLUNAS; j++) {
             if(agenda[i][j][0] != '\0') {
-                printf("Dia %d: %s\n", calendario[i][j] + 1, agenda[i][j]);
+                printf("Dia %d: %s\n", calendario[i][j], agenda[i][j]);
             }
         }
     }
