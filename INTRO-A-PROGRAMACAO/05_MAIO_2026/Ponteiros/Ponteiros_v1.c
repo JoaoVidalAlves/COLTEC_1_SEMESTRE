@@ -456,7 +456,153 @@ void atvintermediario3() {
     return;
 }
 void atvintermediario4() {
-    printf("EM CONSTRUÇÃO");
+    #define MAX_STR 51
+    #define LINHAS 5
+    #define COLUNAS 7
+
+    int **calendario;
+    char ***agenda;
+
+    //ALOCAR MEMORIA PARA O CALENDARIO - LINHAS
+    calendario = malloc(LINHAS * sizeof(*calendario));
+    if(calendario == NULL) {
+        printf("Erro no alocamento.\n");
+        return;
+    }
+
+    //ALOCAR MEMORIA PARA O CALENDARIO - COLUNAS
+    for(int i = 0; i < LINHAS; i++) {
+        calendario[i] = malloc(COLUNAS * sizeof(int));
+        if(calendario[i] == NULL) {
+            printf("Erro no alocamento.\n");
+            for (int k = 0; k < i; k++) {
+                free(calendario[k]);
+            }
+            free(calendario);
+            return;
+        }
+    }
+
+    //PRENCHER O CALENDARIO
+    int dia=0;
+    for(int i = 0; i < LINHAS; i++) {
+        for(int j = 0; j < COLUNAS; j++) {
+            if (dia < 31) {
+                calendario[i][j] = dia++;
+            } else {
+                calendario[i][j] = 0;
+            }
+        }
+    }
+
+    //IMPRIME O CALENDARIO
+    for(int i = 0; i < LINHAS; i++) {
+        printf("\n");
+        for(int j = 0; j < COLUNAS; j++) {
+            printf("%d\t", calendario[i][j]);
+        }
+    }
+    
+    //ALOCAR MEMORIA PARA A AGENDA - LINHAS
+    agenda = malloc(LINHAS * sizeof(**agenda));
+    if(agenda == NULL) {
+        printf("Erro no alocamento.\n");
+        for (int k = 0; k < LINHAS; k++) {
+            free(calendario[k]);
+        }
+        free(calendario);
+        return;
+    }
+    
+    //ALOCAR MEMORIA PARA A AGENDA - COLUNAS
+    for(int i = 0; i < LINHAS; i++) {
+        agenda[i] = malloc(COLUNAS * sizeof(*agenda[i]));
+        if(agenda[i] == NULL) {
+            printf("Erro no alocamento.\n");
+            for (int k = 0; k < i; k++) {
+                free(agenda[k]);
+            }
+            free(agenda);
+            for (int k = 0; k < LINHAS; k++) {
+                free(calendario[k]);
+            }
+            free(calendario);
+            return;
+        }
+
+        //ALOCAR MEMORIA PARA AS STRINGS DA AGENDA
+        for(int j = 0; j < COLUNAS; j++) {
+            agenda[i][j] = malloc(MAX_STR * sizeof(char));
+            agenda[i][j][0] = '\0';
+            if(agenda[i][j] == NULL) {
+                printf("Erro no alocamento.\n");
+                for (int k = 0; k < j; k++) {
+                    free(agenda[i][k]);
+                }
+                free(agenda[i]);
+                for (int k = 0; k < i; k++) {
+                    free(agenda[k]);
+                }
+                free(agenda);
+                for (int k = 0; k < LINHAS; k++) {
+                    free(calendario[k]);
+                }
+                free(calendario);
+                return;
+            }
+        }
+    }
+
+    //PRENCHER A AGENDA
+    char entrada[MAX_STR];
+    int diaSelec=0;
+    printf("\n\nPreencha a agenda (Digite 'sair' para encerrar):\n");
+    printf("Selecione o dia (1-31): ");
+    scanf("%d", &diaSelec);
+    while (diaSelec != 0) {
+        if (diaSelec < 1 || diaSelec > 31) {
+            printf("Dia inválido. Tente novamente.\n");
+        } else {
+            int linha = (diaSelec - 1) / COLUNAS;
+            int coluna = (diaSelec - 1) % COLUNAS;
+
+            printf("Digite o compromisso para o dia %d: ", diaSelec);
+            scanf(" %[^\n]", entrada);
+
+            if (strcmp(entrada, "sair") == 0) {
+                break;
+            }
+
+            strncpy(agenda[linha][coluna], entrada, MAX_STR);
+            agenda[linha][coluna][MAX_STR - 1] = '\0';
+        }
+        printf("Selecione o dia (1-31): ");
+        scanf("%d", &diaSelec);
+    }
+
+    //IMPRIME A AGENDA
+    printf("\nAgenda:\n");
+    for(int i = 0; i < LINHAS; i++) {
+        for(int j = 0; j < COLUNAS; j++) {
+            if(agenda[i][j][0] != '\0') {
+                printf("Dia %d: %s\n", calendario[i][j] + 1, agenda[i][j]);
+            }
+        }
+    }
+
+    //LIBERAR MEMORIA
+    for(int i = 0; i < LINHAS; i++) {
+        for(int j = 0; j < COLUNAS; j++) {
+            free(agenda[i][j]);
+        }
+        free(agenda[i]);
+    }
+    free(agenda);
+    for(int i = 0; i < LINHAS; i++) {
+        free(calendario[i]);
+    }
+    free(calendario);
+    return;
 }
 void atvintermediario5() {
     printf("EM CONSTRUÇÃO");
