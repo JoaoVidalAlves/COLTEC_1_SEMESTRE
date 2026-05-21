@@ -610,10 +610,236 @@ void atvintermediario5() {
 }
 
 void atvdificil1() {
-    printf("EM CONSTRUÇÃO");
+#define LINHAS_1 5
+#define COLUNAS_1 5
+
+    srand(time(NULL));
+
+    int **matriz;
+    int **bloqueado;
+
+    //ALOCA MEMORIA PARA AS LINHAS
+    matriz = calloc(LINHAS_1, sizeof(int*));
+    bloqueado = calloc(LINHAS_1, sizeof(int*));
+
+    if(matriz == NULL || bloqueado == NULL) {
+        return;
+    }
+
+    //ALOCA MEMORIA PARA AS COLUNAS
+    for(int i=0; i<LINHAS_1; i++) {
+
+        matriz[i] = calloc(COLUNAS_1, sizeof(int));
+        bloqueado[i] = calloc(COLUNAS_1, sizeof(int));
+
+        if(matriz[i] == NULL || bloqueado[i] == NULL) {
+
+            for(int v=0; v<i; v++) {
+                free(matriz[v]);
+                free(bloqueado[v]);
+            }
+
+            free(matriz);
+            free(bloqueado);
+
+            return;
+        }
+    }
+
+    //IMPRIME A MATRIZ COM FORMATAÇÃO
+    printf(" ");
+
+    for(int c=0; c<COLUNAS_1; c++) {
+        printf("C%d ", c+1);
+    }
+
+    for(int i=0; i<LINHAS_1; i++) {
+
+        printf("\n L%d ", i+1);
+
+        for(int j=0; j<COLUNAS_1; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+    }
+
+    //GERA POSICOES BLOQUEADAS
+    for(int i=0; i<13; i++) {
+
+        int lin = rand()%5;
+        int col = rand()%5;
+
+        bloqueado[lin][col] = 1;
+    }
+    
+    //PARA VER ONDE ESTÃO OS BLOQUEIOS
+    /* 
+    printf("\nBloqueio\n");
+    printf(" ");
+
+    for(int c=0; c<COLUNAS_1; c++) {
+        printf("C%d ", c+1);
+    }
+
+    for(int i=0; i<LINHAS_1; i++) {
+
+        printf("\n L%d ", i+1);
+
+        for(int j=0; j<COLUNAS_1; j++) {
+            printf("%d ", bloqueado[i][j]);
+        }
+    }
+    */
+
+    //PEDE A ENTRADA PARA LINHAS E COLUNAS
+    int entLinha=0, entColuna=0;
+
+    int continuar = 1;
+
+    while (continuar) {
+
+        //PEDE A LINHA
+        do {
+
+            printf("\n\nSelecione a Linha: ");
+            scanf("%d", &entLinha);
+
+            entLinha -= 1;
+
+            if(entLinha < 0 || entLinha > 4) {
+                printf("As linhas vão de 1 a 5.");
+            }
+
+        } while (entLinha < 0 || entLinha > 4);
+
+        //PEDE A COLUNA
+        do {
+
+            printf("\n\nSelecione a Coluna: ");
+            scanf("%d", &entColuna);
+
+            entColuna -= 1;
+
+            if(entColuna < 0 || entColuna > 4) {
+                printf("As colunas vão de 1 a 5.");
+            }
+
+        } while (entColuna < 0 || entColuna > 4);
+
+        //VERIFICA BLOQUEIO
+        if(bloqueado[entLinha][entColuna] == 1) {
+
+            printf("Essa posição está bloqueada e não pode ser alterada.");
+
+        } else {
+
+            int entrada;
+
+            printf("Posição livre. Insira o valor: ");
+            scanf("%d", &entrada);
+
+            matriz[entLinha][entColuna] = entrada;
+
+            //IMPRIME MATRIZ
+            printf("\n\n ");
+
+            for(int c=0; c<COLUNAS_1; c++) {
+                printf("C%d ", c+1);
+            }
+
+            for(int i=0; i<LINHAS_1; i++) {
+
+                printf("\n L%d ", i+1);
+
+                for(int j=0; j<COLUNAS_1; j++) {
+                    printf("%d ", matriz[i][j]);
+                }
+            }
+
+            //PERGUNTA SE QUER CONTINUAR
+            int opcao=0;
+
+            printf("\n\nDeseja continuar? 1-Sim 0-Não: ");
+            scanf("%d", &opcao);
+
+            if(opcao == 0) {
+                continuar = 0;
+            }
+        }
+    }
+
+    //LIBERA MEMORIA
+    for(int i=0; i<LINHAS_1; i++) {
+
+        free(matriz[i]);
+        free(bloqueado[i]);
+    }
+
+    free(matriz);
+    free(bloqueado);
+
+    return;
 }
 void atvdificil2() {
-    printf("EM CONSTRUÇÃO");
+
+    int *vetor, *temp, entrada=0, valoresALOC=0, continuar=1, i=0, resposta=0;
+    
+    vetor = calloc(1, sizeof(int));
+    
+    while(continuar) {
+        
+        printf("\nInsira um valor para a posição %d do vetor: ", i+1);
+        scanf("%d", &entrada);
+
+        valoresALOC += 1;
+
+        temp = realloc(vetor, valoresALOC * sizeof(int));
+
+        if (temp == NULL) {
+            printf("Erro de alocacao!\n");
+            free(vetor);
+            return;
+        }
+
+        vetor = temp;
+
+        vetor[i] = entrada;
+        i++;
+        
+        do {
+        
+            printf("Deseja inserir mais valores ou apagar o ultimo? ");
+            printf("1-INSERIR 2-APAGAR 0-SAIR: ");
+        
+            scanf("%d", &resposta);
+        
+            if (resposta == 1) {
+                continuar = 1;
+        
+            } else if (resposta == 2) {
+        
+                vetor[i] = 0;
+                i--;
+                valoresALOC--;
+        
+            } else if (resposta == 0) {
+                continuar = 0;
+        
+            } else {
+                printf("Selecione uma opcao valida!\n");
+            }
+        
+        } while (resposta != 0 && resposta != 1 && resposta != 2);
+        
+    }
+    
+    printf("\nValores Inseridos\n");
+    for(int d=0; d<valoresALOC; d++) {
+        printf("P%d: %d\n",d+1,vetor[d]);
+    }
+
+    free(vetor);
+
+    return;
 }
 void atvdificil3() {
     printf("EM CONSTRUÇÃO");
