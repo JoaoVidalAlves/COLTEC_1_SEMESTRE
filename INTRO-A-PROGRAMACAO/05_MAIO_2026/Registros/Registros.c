@@ -217,27 +217,20 @@ void menuDificil() {
 }
 
 void atvfacil1() {
-    typdef struct {
+    typdef struct cadastroAluno {
         int identidade;
         char nome[50];
         int nota;
-    }
-        Aluno;
+    } cadastroAluno;
 
-        printf("Digite a quantidade de alunos: ");
-        int quantidadeAlunos; 
-        scanf("%d", &quantidadeAlunos);
-        Aluno alunos[quantidadeAlunos];
-        for (int i = 0; i < quantidadeAlunos; i++) {
-            printf("Digite a identidade do aluno %d: ", i + 1);
-            scanf("%d", &alunos[i].identidade);
-            printf("Digite o nome do aluno %d: ", i + 1);
-            scanf("%s", alunos[i].nome);
-            printf("Digite a nota do aluno %d: ", i + 1);
-            scanf("%d", &alunos[i].nota);
-        }
-        
+    cadastroAluno alunos;
+
     
+
+
+
+
+
 }
 void atvfacil2() {
 
