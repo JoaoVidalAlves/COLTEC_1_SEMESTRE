@@ -75,7 +75,7 @@ int main() {
     setlocale(LC_ALL, "pt-BR");
     int dificuldade=0;
 
-    printf("***EXERCICIOS DE PONTEIROS***\n");
+    printf("***EXERCICIOS DE REGISTROS***\n");
     printf("\nSelecione a dificuldade\n");
     printf("\n");
     printf("1 = FACIL\n");
