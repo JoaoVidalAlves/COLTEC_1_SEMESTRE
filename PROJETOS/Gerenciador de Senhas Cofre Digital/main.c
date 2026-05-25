@@ -68,6 +68,7 @@ int main() {
                     printf("\nSenha: %s\n", temp.senha);
                 }
                 printf("\n");
+                
                 break;
                 }
             case 3: {
