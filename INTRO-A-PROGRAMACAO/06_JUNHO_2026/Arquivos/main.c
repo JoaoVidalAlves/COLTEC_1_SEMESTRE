@@ -117,12 +117,6 @@ void atvintermediario3();
 void atvintermediario4();
 void atvintermediario5();
 
-void atvdificil1();
-void atvdificil2();
-void atvdificil3();
-void atvdificil4();
-void atvdificil5();
-
 //PROTOTIPO DO MENU
 int main() {
     setlocale(LC_ALL, "pt-BR");
@@ -133,7 +127,6 @@ int main() {
     printf("\n");
     printf("1 = FACIL\n");
     printf("2 = INTERMEDIARIO\n");
-    printf("3 = DIFICIL\n");
     printf("\nSelecione: ");
     scanf("%i", &dificuldade);
 
@@ -144,10 +137,6 @@ int main() {
         break;
         case 2: {
             menuIntermediario();
-        }
-        break;
-        case 3: {
-            menuDificil();
         }
         break;
         default: {
@@ -198,7 +187,7 @@ void menuIntermediario() {
     int exercicio=0;
     system(CLEAR_COMMAND);
     printf("\n***EXERCICIOS INTERMEDIARIOS***\n");
-    printf("\nSelecione o exercicio (1 a 4): ");
+    printf("\nSelecione o exercicio (1 a 3): ");
     scanf("%d", &exercicio);
    
     //system(CLEAR_COMMAND);
@@ -216,50 +205,16 @@ void menuIntermediario() {
             atvintermediario3();    
         }
         break;
+        /*
         case 4: {
             atvintermediario4();    
         }
         break;
-        //case 5: {
-        //    atvintermediario5();    
-        //}
-        //break;
-        default : {
-            printf("Selecione um exercicio valido");
-        }
-    }    
-}
-
-void menuDificil() {
-    int exercicio=0;
-    system(CLEAR_COMMAND);
-    printf("\n***EXERCICIOS DIFICEIS***\n");
-    printf("\nSelecione o exercicio (1 a 2): ");
-    scanf("%d", &exercicio);
-   
-    //system(CLEAR_COMMAND);
-    
-    switch (exercicio) {
-        case 1: {
-            atvdificil1();    
-        }
-        break;
-        case 2: {
-            atvdificil2();    
-        }
-        break;
-        /*case 3: {
-            atvdificil3();    
-        }
-        break;
-        case 4: {
-            atvdificil4();    
-        }
-        break;
         case 5: {
-            atvdificil5();    
+           atvintermediario5();    
         }
-        break;*/
+        break;
+        */
         default : {
             printf("Selecione um exercicio valido");
         }
@@ -398,7 +353,58 @@ void atvfacil5() {
 }
 
 void atvintermediario1() {
+    limparTela();
+    iniciarSistema();
+    
+    printf("\nQUESTÃO 6\n");
+    srand(time(NULL));
+    
+	FILE *arquivo;
 
+    arquivo = abrirArquivoGravacao();
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.");
+        return;
+    }
+
+    for(int i=0; i<20; i++) {
+        int num = rand()%100;
+        fprintf(arquivo, "%d\n",num);
+    }
+    
+    fclose(arquivo);
+
+    printf("Arquivo com 20 números aleatorios criado.\n\n");
+
+    arquivo = abrirArquivoLeitura();
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.");
+        return;
+    }   
+    
+    char linha[256];
+    int contadorPar=0;
+    int contadorImpar=0;
+    int numero=0;
+    while (fgets(linha, sizeof(linha), arquivo) != NULL) {
+        numero = atoi(linha);
+        if(numero % 2 == 0) 
+        {
+            contadorPar++;
+        } else 
+        {
+            contadorImpar++;
+        }
+    }
+    
+    printf("Total de numeros pares: %d\nTotal de numeros impares: %d", contadorPar, contadorImpar);
+
+    printf("\n\nQUESTÃO 7");
+    fseek(arquivo, 0, SEEK_END);
+    long tamanho = ftell(arquivo);
+
+    printf("\nTamanho do arquivo: %ld bytes", tamanho);
+    fclose(arquivo);
 }
 void atvintermediario2() {
 
@@ -410,21 +416,5 @@ void atvintermediario4() {
 
 }
 void atvintermediario5() {
-
-}
-
-void atvdificil1() {
-
-}
-void atvdificil2() {
-
-}
-void atvdificil3() {
-
-}
-void atvdificil4() {
-
-}
-void atvdificil5() {
 
 }
