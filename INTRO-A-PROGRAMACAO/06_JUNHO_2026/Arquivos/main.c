@@ -103,19 +103,12 @@ void iniciarSistema() {
 //DECLARAR PROTOTIPOS DO MENU E ATIVIDADES
 void menuFacil();
 void menuIntermediario();
-void menuDificil();
 
 void atvfacil1();
 void atvfacil2();
-void atvfacil3();
-void atvfacil4();
-void atvfacil5();
 
 void atvintermediario1();
 void atvintermediario2();
-void atvintermediario3();
-void atvintermediario4();
-void atvintermediario5();
 
 //PROTOTIPO DO MENU
 int main() {
@@ -187,7 +180,7 @@ void menuIntermediario() {
     int exercicio=0;
     system(CLEAR_COMMAND);
     printf("\n***EXERCICIOS INTERMEDIARIOS***\n");
-    printf("\nSelecione o exercicio (1 a 3): ");
+    printf("\nSelecione o exercicio (1 a 2): ");
     scanf("%d", &exercicio);
    
     //system(CLEAR_COMMAND);
@@ -201,11 +194,12 @@ void menuIntermediario() {
             atvintermediario2();    
         }
         break;
+        /*
         case 3: {
             atvintermediario3();    
         }
         break;
-        /*
+
         case 4: {
             atvintermediario4();    
         }
@@ -342,33 +336,21 @@ void atvfacil2() {
     printf("Dados do arquivo.txt copiados para o temp.txt");
     return;
 }
-void atvfacil3() {
-
-}
-void atvfacil4() {
-
-}
-void atvfacil5() {
-
-}
 
 void atvintermediario1() {
     limparTela();
     iniciarSistema();
     
     printf("\nQUESTÃO 6\n");
+    
     srand(time(NULL));
     
 	FILE *arquivo;
 
     arquivo = abrirArquivoGravacao();
-    if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo.");
-        return;
-    }
 
     for(int i=0; i<20; i++) {
-        int num = rand()%100;
+        int num = rand()%20;
         fprintf(arquivo, "%d\n",num);
     }
     
@@ -377,21 +359,18 @@ void atvintermediario1() {
     printf("Arquivo com 20 números aleatorios criado.\n\n");
 
     arquivo = abrirArquivoLeitura();
-    if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo.");
-        return;
-    }   
     
-    char linha[256];
     int contadorPar=0;
     int contadorImpar=0;
     int numero=0;
-    while (fgets(linha, sizeof(linha), arquivo) != NULL) {
-        numero = atoi(linha);
-        if(numero % 2 == 0) 
+    
+    printf("Numeros escritos\n");
+
+    while (fscanf(arquivo, "%d", &numero) == 1) {
+        if (numero % 2 == 0)
         {
             contadorPar++;
-        } else 
+        } else
         {
             contadorImpar++;
         }
@@ -400,21 +379,60 @@ void atvintermediario1() {
     printf("Total de numeros pares: %d\nTotal de numeros impares: %d", contadorPar, contadorImpar);
 
     printf("\n\nQUESTÃO 7");
+    
     fseek(arquivo, 0, SEEK_END);
     long tamanho = ftell(arquivo);
 
     printf("\nTamanho do arquivo: %ld bytes", tamanho);
+    
     fclose(arquivo);
 }
 void atvintermediario2() {
+    limparTela();
+    iniciarSistema();
+    
+    srand(time(NULL));
+    
+	FILE *arquivo;
+    FILE *temp;
 
-}
-void atvintermediario3() {   
+    arquivo = abrirArquivoGravacao();
 
-}
-void atvintermediario4() {
+    for(int i=0; i<20; i++) {
+        int num = rand()%20;
+        fprintf(arquivo, "%d\n",num);
+    }
+    
+    fclose(arquivo);
 
-}
-void atvintermediario5() {
+    printf("Arquivo com 20 números aleatorios criado.\n\n");
 
+    arquivo = abrirArquivoLeitura();
+    
+    temp = abrirArquivoGravacaoNovo();
+
+    int numero=0;
+    
+    while (fscanf(arquivo, "%d", &numero) == 1) {
+        if (numero > 10) 
+        {
+            fprintf(temp, "%d\n", numero);
+        }
+    }
+
+    printf("\nNumeros maiores que 10 copiados para o arquivo temp\n");
+    
+    rewind(arquivo);
+    
+    int soma=0;
+    while (fscanf(arquivo, "%d", &numero) == 1) {
+        soma += numero;
+    }
+
+    printf("\nMedia = %.2f\n", (float)soma/20);
+    printf("Soma total = %d", soma);
+
+
+    fclose(arquivo);
+    fclose(temp);
 }
