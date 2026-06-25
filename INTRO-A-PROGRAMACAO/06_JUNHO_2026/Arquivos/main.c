@@ -219,7 +219,8 @@ void atvfacil1() {
 		printf("Digite sua Idade: ");
 		scanf(" ");
         scanf(" %3[^\n]", idade);
-		int c; while ((c = getchar()) != '\n' && c != EOF); 
+		int c; 
+        while ((c = getchar()) != '\n' && c != EOF); 
 		idadeV = validarNumero(idade);
 	} while (idadeV <= 0);
 
