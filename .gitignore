@@ -6,3 +6,4 @@
 *.opendb
 *.json
 *.sqlite
+/.vs
