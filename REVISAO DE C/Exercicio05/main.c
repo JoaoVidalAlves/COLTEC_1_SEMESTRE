@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+/*--------------------------------------------------------
+    Lê um número inteiro dentro do intervalo informado.
+---------------------------------------------------------*/
+int LerNumero(const char* mensagem, int minimo, int maximo)
+{
+    char entrada[100];
+    char* fim;
+    long valor;
+
+    while (1)
+    {
+        printf("%s", mensagem);
+
+        if (fgets(entrada, sizeof(entrada), stdin) == NULL)
+            continue;
+
+        /* Remove o '\n' */
+        entrada[strcspn(entrada, "\n")] = '\0';
+
+        /* Converte para número */
+        valor = strtol(entrada, &fim, 10);
+
+        /* Verifica se toda a entrada era numérica */
+        if (*entrada == '\0' || *fim != '\0')
+        {
+            printf("Entrada invalida. Digite apenas numeros.\n\n");
+            continue;
+        }
+
+        /* Verifica intervalo */
+        if (valor < minimo || valor > maximo)
+        {
+            printf("Valor invalido - Min %d, Max %d.\n\n",
+                minimo, maximo);
+            continue;
+        }
+
+        return (int)valor;
+    }
+}
+
+/*--------------------------------------------------------
+    Lê um texto respeitando um tamanho máximo.
+---------------------------------------------------------*/
+void LerTexto(const char* mensagem, char texto[], int tamanho)
+{
+    while (1)
+    {
+        printf("%s", mensagem);
+
+        if (fgets(texto, tamanho, stdin) == NULL)
+            continue;
+
+        /* Se encontrou '\n', remove */
+        if (strchr(texto, '\n') != NULL)
+        {
+            texto[strcspn(texto, "\n")] = '\0';
+            return;
+        }
+
+        /* Buffer não terminou -> usuário digitou mais caracteres */
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
+
+        printf("Valor invalido - Max %d caracteres.\n\n",
+            tamanho - 1);
+    }
+}
+
+int main()
+{
+
+}
