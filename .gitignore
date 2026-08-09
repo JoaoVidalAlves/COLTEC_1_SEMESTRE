@@ -1,9 +1,29 @@
-.vscode/
-*.vsidx
-*.db
-*.db-shm
-*.db-wal
-*.opendb
-*.json
-*.sqlite
+# Compilação do .NET
+bin/
+obj/
+
+# Visual Studio
+.vs/
 /.vs
+
+# Arquivos específicos do usuário
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+*.sqlite
+
+*.recipe
+*.ilk
+*.tlog
+*.filters
+*.vcxproj
+*.idb
+*.obj
+*.pdb
+*.exe
+*.enc
+*.slnx
